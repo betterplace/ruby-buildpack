@@ -47,6 +47,7 @@ class LanguagePack::Rails5 < LanguagePack::Rails42
 
   private
     def has_ffmpeg?
+      puts ENV.inspect
       run("which ffmpeg")
       return $?.success?
     end
