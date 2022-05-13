@@ -16,7 +16,12 @@ module LanguagePack
       klass.use?
     end
 
-    return pack ? pack.new(*args) : nil
+    if pack
+      pack.module_eval do
+        prepend Betterplace
+      end
+      pack.new(*args)
+    end
   end
 end
 
@@ -47,3 +52,4 @@ require "language_pack/rails5"
 require "language_pack/rails6"
 require "language_pack/rails7"
 require "language_pack/no_lockfile"
+require "language_pack/betterplace"
